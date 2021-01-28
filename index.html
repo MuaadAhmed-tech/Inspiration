@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <header>
+            <div class="logo">
+                <a href="#">Muaad Ahmed</a>
+                <p>Personal Project</p>
+            </div>
+            <div class="menu" onclick="toggleMenu()"></div>
+            <ul class="navigation">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Testimonials</a></li>
+                <li><a href="#">Social</a></li>
+            </ul>
+            </header>
+            <div class='contentBox'>
+                <h1>I WILL WIN. MAYBE NOT IMMEDIATELY BUT ABSOLUTELY AND DEFINITELY</h1>
+                <a href="#">Get Involved</a>
+            </div>
+            <div class="testimonials">
+                <div class="testimonialImg">
+                    <h1>Testimonials</h1>
+                    <img src="underline2.png">
+                </div>
+                <div class="testimonial testimonial1">
+                    <img src="einstein.jpg"><br>
+                    <span>Albert Einstein</span> <br>
+                    <q>We cannot solve our problems with the same thinking we used when we created them.</q>
+                </div>
+                <div class="testimonial testimonial2">
+                    <img src="nelson.jpg"><br>
+                    <span>Nelson Mandela</span> <br>
+                    <q>I learned that courage was not the absence of fear, but the triumph over it. The brave man is not he who does not feel afraid, but he who conquers that fear.</q>
+                </div>
+                <div class="testimonial testimonial3">
+                    <img src="abraham.jpg"> <br>
+                    <span>Abraham Lincoln</span> <br>
+                    <q>You cannot escape the responsibility of tomorrow by evading it today.</q>
+                </div>
+                <div class="testimonial testimonial4">
+                    <img src="Martin_Luther_King_Jr.png"><br>
+                    <span>Martin Luther King Jr</span> <br>
+                    <q>Faith is taking the first step even when you don't see the whole staircase.</q>
+                </div>
+                <div class="chevron">
+                    <img src="Chevronleft.png" class="left" onclick="nextSlide(-1);" onclick="navClickTransition();">
+                    <img src="Chevronright.png" class="right" onclick="nextSlide(1);"; onclick="navClickTransition();">
+                </div>
+            </div>
+            <div class="horizon">
+            </div>
+            <div class="about">
+                <div class="img">
+                    <img src="black.jpg">
+                </div>
+                <div class="desc">
+                    <h1>About Me</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                    <a href="#">About Me</a>
+                </div>
+            </div>
+                <footer>
+                    <div class="logo-ball">
+                        <img src="ball-logo.jpg">
+                        <h1>Personal Project</h1>
+                    </div>
+                    <div class="sci">
+                        <li><a><img src="facebook.png" class="facebook"></a></li>
+                        <li><a><img src="instagram.png"></a></li>
+                        <li><a><img src="twitter.png" class="twitter"></a></li>
+                    </div>
+                </footer>
+                
+    </section>
+    <script type="text/javascript">
+        var slide_index = 1;
+        displaySlides(slide_index);  
+        function nextSlide(n) {  
+            displaySlides(slide_index += n);  
+        }  
+        function currentSlide(n) {  
+            displaySlides(slide_index = n);  
+        }  
+        function displaySlides(n) {  
+            var i;  
+            var slides = document.getElementsByClassName("testimonial"); 
+            var current; 
+            for (i = 0; i < slides.length; i++) { 
+                if(slides[i].style.display != "none") {
+                    current = slides[i];
+                } 
+            }  
+            if (n > slides.length) { slide_index = 1 }  
+            if (n < 1) { slide_index = slides.length }  
+
+            current.classList.remove("active");
+            current.classList.add("inactive");
+
+            setTimeout(() => {
+                for (i = 0; i < slides.length; i++){
+                    slides[i].classList.remove("active", "inactive");
+                    slides[i].style.display = "none";
+                }
+                slides[slide_index - 1].classList.remove("inactive");
+                slides[slide_index - 1].style.display = "block";
+                slides[slide_index - 1].classList.add("active");
+            }, 1000)
+        }  
+    </script>
+    <script type="text/javascript">
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            const navigation = document.querySelector('.navigation');
+            navigation.classList.toggle('active');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
